@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import moment from 'moment';
 import 'moment/locale/en-gb';
 import { Tournament } from '../../store/reducers';
-import { Button } from '../Button';
-import { Text } from '../Text';
+import { Button } from '../Button/Button';
+import { Text } from '../Text/Text';
 import { ButtonsWrapper, CardFrame } from './styled';
 
 moment.locale('en-gb');
