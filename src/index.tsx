@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider, useDispatch, useSelector } from 'react-redux';
+import { Provider } from 'react-redux';
 import styled from 'styled-components';
 import GlobalStyle from './GlobalStyle';
-import store from './store';
+import { store } from './store/store';
 import Container from './components/Container/Container';
-import { Text } from './components/Text';
-import { Input } from './components/Input';
-import { Card } from './components/Card';
-import { Button } from './components/Button';
-import { Tournament, TournamentsState } from './store/reducers';
+import { Text } from './components/Text/Text';
+import { Input } from './components/Input/Input';
+import { Card } from './components/Card/Card';
+import { Button } from './components/Button/Button';
+import { Tournament } from './store/reducers';
 import {
   addTournament,
   deleteTournament,
@@ -18,6 +18,7 @@ import {
 } from './store/action-creators';
 import { Styled } from './components/Text/styled';
 import { Grid } from './components/Card/styled';
+import { useAppDispatch, useAppSelector } from './hooks';
 
 const Wrapper = styled.div`
   display: flex;
@@ -30,12 +31,10 @@ const CenteredWrapper = styled.div`
 `;
 
 const App: React.FC = () => {
-  const tournaments = useSelector(
-    (state: TournamentsState) => state.tournaments
-  );
-  const loading = useSelector((state: TournamentsState) => state.loading);
-  const error = useSelector((state: TournamentsState) => state.error);
-  const dispatch = useDispatch();
+  const tournaments = useAppSelector(state => state.tournaments);
+  const loading = useAppSelector(state => state.loading);
+  const error = useAppSelector(state => state.error);
+  const dispatch = useAppDispatch();
 
   const handleCreateTournament = (name: string | null) => {
     if (name) {

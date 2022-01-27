@@ -1,5 +1,5 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { FC, useEffect, useRef, useState } from 'react';
+import { useAppDispatch } from '../../hooks';
 import { getTournaments } from '../../store/action-creators';
 import { InputWrapper } from './styled';
 
@@ -10,7 +10,7 @@ type Props = {
 export const Input: FC<Props> = ({ placeholder }) => {
   const [filter, setFilter] = useState('');
   const inputRef = useRef();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const timer = setTimeout(() => {
